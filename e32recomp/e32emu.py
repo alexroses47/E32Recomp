@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""RunbIan HLE runtime, stage 0: runs functions of a Symbian E32 executable with Unicorn.
+"""E32Recomp HLE runtime, stage 0: runs functions of a Symbian E32 executable with Unicorn.
 Etapa 0 del runtime: ejecuta funciones de un ejecutable E32 de Symbian con Unicorn.
 
-Loads an uncompressed E32 image (runbian/e32_unpack.py) at the requested bases, applies its relocations,
+Loads an uncompressed E32 image (e32recomp/e32_unpack.py) at the requested bases, applies its relocations,
 replaces Symbian imports with Python implementations (HLE) and lets you call a function by its link address
 with a prepared state. Used to compare a port's code with the original, function by function.
 

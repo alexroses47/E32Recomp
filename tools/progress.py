@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Progress page for RunbIan / Página de progreso de RunbIan.
+"""Progress page for E32Recomp / Página de progreso de E32Recomp.
 
 Counts, for every Symbian library used by the tracked games (games/*.tsv), how many of the imported
-functions the runtime implements (STUBS in runbian/e32emu.py), and how many exports the library has
+functions the runtime implements (STUBS in e32recomp/e32emu.py), and how many exports the library has
 (third_party/symbian-defs/*.def). Writes progress.json, progress.svg and index.html.
 
 Cuenta, por cada biblioteca de Symbian que usan los juegos de referencia, cuántas de las funciones que
@@ -21,11 +21,11 @@ from collections import defaultdict
 from datetime import datetime, timezone
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-REPO = "https://github.com/alexroses47/RunbIan"
+REPO = "https://github.com/alexroses47/E32Recomp"
 
 
 def implemented_symbols():
-    src = open(os.path.join(ROOT, "runbian", "e32emu.py"), encoding="utf-8").read()
+    src = open(os.path.join(ROOT, "e32recomp", "e32emu.py"), encoding="utf-8").read()
     block = src[src.index("STUBS = {"):]
     block = block[:block.index("\n}\n")]
     return set(re.findall(r'^\s+"([^"]+)":', block, re.M))
@@ -96,13 +96,13 @@ def main():
 
     page = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RunbIan progress</title>
+<title>E32Recomp progress</title>
 <style>body{{font-family:sans-serif;max-width:1000px;margin:auto;padding:16px;background:#fff;color:#1f2328}}
 img{{max-width:100%}}.bar{{background:#6e7681;width:100%;min-width:120px;height:14px}}.bar i{{display:block;height:14px;background:#2ea043}}
 table{{border-collapse:collapse;width:100%}}th,td{{border:1px solid #ccc;padding:2px 8px}}td+td,th+th{{text-align:right}}td.b{{width:30%}}
 @media(prefers-color-scheme:dark){{body{{background:#0d1117;color:#e6edf3}}th,td{{border-color:#30363d}}a{{color:#58a6ff}}}}</style>
 </head><body>
-<h1>RunbIan — Progress / Progreso</h1>
+<h1>E32Recomp — Progress / Progreso</h1>
 <img src="progress.svg" alt="{pct:.1f}%">
 <p><b>{tot_impl}</b> of <b>{tot_used}</b> Symbian functions imported by the tracked games are implemented by the
 runtime. / <b>{tot_impl}</b> de <b>{tot_used}</b> funciones de Symbian que importan los juegos de referencia están

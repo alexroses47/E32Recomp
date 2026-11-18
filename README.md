@@ -45,7 +45,8 @@ the subset of Symbian that games use**, verified function by function against th
 | C++ RTTI / vtable scanner and class map (`e32recomp/rtti_scan.py`, `e32recomp/classes_doc.py`) | Works |
 | Ghidra scripts for E32 images (`e32recomp/ghidra/`) | Works |
 | **Runtime, stage 0** (`e32recomp/e32emu.py`): loads an E32 image with relocations in Unicorn, replaces imports with HLE implementations and calls original functions | Works for pure logic (math, physics); no OS services yet |
-| Progress page (`tools/progress.py`) | Works |
+| Inventory of a game's own functions by stage: discovered / studied / reimplemented / verified (`e32recomp/game_functions.py`) | Works |
+| Progress page with function grids, like AnyPS5 (`tools/progress.py`) | Works |
 
 All of this was built for, and is used every day by, the first reference game:
 **[Bounce Touch 3D](https://github.com/alexroses47/Bounce-Touch-3D)**, a native Nintendo 3DS port of
@@ -73,7 +74,8 @@ python3 e32recomp/make_import_map.py work/Game_unpacked.exe third_party/symbian-
 python3 tools/progress.py                                               # progress page in docs/
 ```
 
-To track a new game, add `games/<name>.tsv` (`kind  dll  ordinal  symbol`, from `make_import_map.py`).
+To track a new game, add `games/<name>.tsv` (`kind  dll  ordinal  symbol`, from `make_import_map.py`) and,
+optionally, `games/<name>_functions.tsv` (from `e32recomp/game_functions.py`: addresses, names and stages, no code).
 
 ## Legal
 

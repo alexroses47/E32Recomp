@@ -1,0 +1,14 @@
+_site/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+# never commit game files / nunca subir archivos de juegos
+*.sis
+*.sisx
+*.exe
+*.app
+work/
+docs/index.html
+docs/progress.json
+docs/progress.svg
